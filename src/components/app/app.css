@@ -1,0 +1,30 @@
+.app {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  grid-template-rows: 80px 1fr;
+  grid-gap: 15px;
+  grid-template-areas:
+    "header header header"
+    "sidebar content content";
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app__header {
+  grid-area: header;
+  background-color: darksalmon;
+}
+
+.app__header img {
+  max-width: 100%;
+}
+
+.app__sidebar {
+  grid-area: sidebar;
+  background-color: greenyellow;
+}
+
+.app__content {
+  grid-area: content;
+  background-color: lightseagreen;
+}
