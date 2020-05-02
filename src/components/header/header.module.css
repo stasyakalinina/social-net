@@ -1,0 +1,23 @@
+.block {
+  grid-area: header;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas:
+    "logo wrapper wrapper";
+  background-color: #fff;
+}
+
+.wrapper {
+  grid-area: wrapper;
+  padding: 0 2em;
+
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.logo img {
+  max-width: 100%;
+}

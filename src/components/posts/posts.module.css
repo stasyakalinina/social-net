@@ -1,0 +1,23 @@
+.block {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 25px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.btn {
+
+  background-color: mediumorchid;
+  border: none;
+}

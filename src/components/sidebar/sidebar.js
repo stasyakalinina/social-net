@@ -1,18 +1,29 @@
 import React from 'react';
+import styles from './sidebar.module.css';
 
 const Sidebar = () => {
   return (
-    <sidebar className="app__sidebar sidebar">
+    <aside className={styles.sidebar}>
       <nav>
-        <ul>
-          <li>Profile</li>
-          <li>Messages</li>
-          <li>News</li>
-          <li>Music</li>
-          <li>Settings</li>
+        <ul className={styles.list}>
+          <li>
+            <a href="#" className={`${styles.link} ${styles.active}`}>Profile</a>
+          </li>
+          <li>
+            <a href="#" className={styles.link}>Messages</a>
+          </li>
+          <li>
+            <a href="#" className={styles.link}>News</a>
+          </li>
+          <li>
+            <a href="#" className={styles.link}>Music</a>
+          </li>
+          <li>
+            <a href="#" className={styles.link}>Settings</a>
+          </li>
         </ul>
       </nav>
-    </sidebar>
+    </aside>
   )
 };
 
