@@ -5,7 +5,7 @@ const Post = (props) => {
   const {message, like} = props;
   return (
     <div className={styles.block}>
-      <img />
+      <img src="" alt="ava" />
       <p>{message}</p>
       <button>Like {like}</button>
     </div>

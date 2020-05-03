@@ -11,13 +11,28 @@
 .wrapper {
   grid-area: wrapper;
   padding: 0 2em;
-
+  /* box-shadow: inset -5px 0 10px 5px red; */
 }
 
 .logo {
+  position: relative;
+  height: 100%;
   grid-area: logo;
 }
 
+/* .logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  background: aqua;
+  background: linear-gradient(to right, rgba(181, 193, 204, 0.5) 0%, rgba(181, 193, 204, 0.3) 50%, rgba(255, 255, 255, 1) 75%);
+
+} */
+
 .logo img {
+  display: block;
   max-width: 100%;
 }

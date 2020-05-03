@@ -1,3 +1,15 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  color: #303a49;
+  background-color: #e9ecef;
+}
+
 .app {
   display: grid;
   grid-template-columns: 2fr 10fr;
@@ -7,6 +19,8 @@
     "sidebar content content";
   max-width: 1200px;
   margin: 0 auto;
+  box-shadow: 7px 7px 15px 0px rgba(181, 193, 204, 0.8),
+              -7px -7px 15px 0px rgba(181, 193, 204, 0.8);
 }
 
 .app__content {
