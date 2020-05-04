@@ -8,15 +8,15 @@ const Intro = () => {
       <img className={styles.ava} src={ava} alt="avatar" />
       <ul className={styles.list}>
         <li>
-          <span>City:</span>
-          <span>Mexico</span>
+          <span>City: </span>
+          <span>Eho</span>
         </li>
         <li>
-          <span>About:</span>
+          <span>About: </span>
           <span>Some words about me</span>
         </li>
         <li>
-          <span>Website:</span>
+          <span>Website: </span>
           <span>none</span>
         </li>
       </ul>

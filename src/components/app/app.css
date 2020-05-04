@@ -25,5 +25,6 @@ body {
 
 .app__content {
   grid-area: content;
-  background-color: lightseagreen;
+  min-height: calc(100vh - 80px);
+  background-color: #b5c1cc;
 }

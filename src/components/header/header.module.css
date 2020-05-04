@@ -5,32 +5,38 @@
   grid-template-columns: 2fr 10fr;
   grid-template-areas:
     "logo wrapper wrapper";
+  height: 80px;
   background-color: #fff;
 }
 
 .wrapper {
   grid-area: wrapper;
   padding: 0 2em;
-  /* box-shadow: inset -5px 0 10px 5px red; */
+}
+
+.wrapper input {
+  width: 350px;
+  padding: 7px 20px;
+  font: inherit;
+  border: 1px solid #b5c1cc;
+  border-radius: 20px;
+}
+
+.wrapper input:hover {
+  box-shadow: 1px 1px 6px 0 #b5c1cc,
+              -1px -1px 6px 0 #b5c1cc;
+}
+
+.wrapper input:focus {
+  border-color: #61DAFB;
+  box-shadow: none;
+  outline: none;
 }
 
 .logo {
-  position: relative;
   height: 100%;
   grid-area: logo;
 }
-
-/* .logo::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 10px;
-  height: 100%;
-  background: aqua;
-  background: linear-gradient(to right, rgba(181, 193, 204, 0.5) 0%, rgba(181, 193, 204, 0.3) 50%, rgba(255, 255, 255, 1) 75%);
-
-} */
 
 .logo img {
   display: block;
