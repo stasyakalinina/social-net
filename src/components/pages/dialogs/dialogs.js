@@ -18,18 +18,28 @@ const Message = ({msg}) => {
   );
 };
 
-const DialogPage = () => {
+const DialogPage = ({data}) => {
+
+  const { dialogs, messages} = data;
+  const dialogsItems = dialogs.map((d) =>
+    <li key={d.id}>
+      <Dialog name={d.name}/>
+    </li>
+  );
+
+  const messageItems = messages.map((m) =>
+    <li key={m.id}>
+      <Message msg={m.message}/>
+    </li>
+  );
+
   return (
     <section className={styles.block}>
       <ul className={styles.dialogList}>
-        <li>
-          <Dialog name="Ann" id="1"/>
-        </li>
+        {dialogsItems}
       </ul>
       <ul className={styles.messageList}>
-        <li>
-          <Message msg="Hi world!!" id="1"/>
-        </li>
+        {messageItems}
       </ul>
     </section>
   )

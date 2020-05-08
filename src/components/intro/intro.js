@@ -8,6 +8,9 @@ const Intro = () => {
       <img className={styles.ava} src={ava} alt="avatar" />
       <ul className={styles.list}>
         <li>
+          <h1 className={styles.name}>Anastasia Kalinina</h1>
+        </li>
+        <li>
           <span>City: </span>
           <span>Eho</span>
         </li>

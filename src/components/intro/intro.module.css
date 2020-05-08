@@ -1,9 +1,10 @@
 .block {
+  width: 100%;
   padding: 20px;
+  margin: 0 0 2rem;
   text-align: center;
   background-color: #fff;
   border-radius: 20px;
-  margin-right: 2em;
 }
 
 .ava {
@@ -16,4 +17,9 @@
   margin: 10px 0 0;
   padding: 0;
   list-style: none;
+}
+
+.name {
+  font-size: 28px;
+  margin: 0 0 1rem;
 }

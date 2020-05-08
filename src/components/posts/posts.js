@@ -6,7 +6,7 @@ const Posts = () => {
   return (
     <article className={styles.block}>
       <div className={styles.wrapper}>
-        <textarea></textarea>
+        <textarea className={styles.textarea} placeholder="What's new?"></textarea>
         <button className={styles.btn}>Add post</button>
       </div>
       <ul className={styles.list}>
