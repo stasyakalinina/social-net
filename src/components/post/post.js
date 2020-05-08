@@ -7,7 +7,11 @@ const Post = (props) => {
     <div className={styles.block}>
       <img src="https://i.pinimg.com/474x/82/14/60/8214601fb6d99bdc0df093133bd5da64.jpg" alt="ava" className={styles.ava} />
       <div className={styles.text}>{message}
-        <button className={styles.like}>Like {like}</button>
+        <button
+          className={styles.like}
+        >
+          like {like}
+        </button>
       </div>
     </div>
   )

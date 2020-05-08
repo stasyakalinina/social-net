@@ -13,7 +13,7 @@ const Friends = ({data}) => {
 
   return (
     <section className={styles.block}>
-      <h2>Friends</h2>
+      <h2 className={styles.title}>Friends</h2>
       <ul className={styles.list}>
         {friendsItems}
       </ul>
