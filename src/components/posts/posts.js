@@ -2,7 +2,14 @@ import React from 'react';
 import styles from './posts.module.css';
 import Post from './../post/post';
 
-const Posts = () => {
+const Posts = ({data}) => {
+
+  const postItems = data.map((post) =>
+    <li key={post.id}>
+      <Post message={post.text} like={post.like} />
+    </li>
+  );
+
   return (
     <article className={styles.block}>
       <div className={styles.wrapper}>
@@ -10,12 +17,7 @@ const Posts = () => {
         <button className={styles.btn}>Add post</button>
       </div>
       <ul className={styles.list}>
-        <li className={styles.item}>
-          <Post message="Hello world!" like="15" />
-        </li>
-        <li>
-          <Post message="It's my first message" like="20"/>
-        </li>
+        {postItems}
       </ul>
     </article>
   );
