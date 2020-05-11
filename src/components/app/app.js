@@ -5,15 +5,22 @@ import Sidebar from '../sidebar/sidebar';
 import './app.css';
 import { ProfilePage, DialogPage } from '../pages';
 
-function App({ data }) {
+function App(props) {
 
   return (
       <div className="app">
         <Header />
         <Sidebar />
         <main className="app__content">
-          <Route path="/profile" render={ () => <ProfilePage data={data.profilePage} />} />
-          <Route path="/dialogs" render={ () => <DialogPage data={data.dialogPage} />} />
+          <Route
+            path="/profile"
+            render={ () =>
+              <ProfilePage
+                data={props.data.profilePage}
+                dispatch={props.dispatch}
+            />}
+          />
+          <Route path="/dialogs" render={ () => <DialogPage data={props.data.dialogPage} />} />
         </main>
       </div>
   );

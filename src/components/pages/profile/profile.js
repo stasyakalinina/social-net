@@ -5,7 +5,7 @@ import Posts from '../../posts/posts';
 import Friends from '../../friends/friends';
 
 const ProfilePage = (props) => {
-  const {data: { friends, posts} } = props;
+  const {data: { friends, posts, newPostText}, dispatch } = props;
 
   return (
     <section className={styles.block}>
@@ -15,7 +15,10 @@ const ProfilePage = (props) => {
           <Intro />
           <Friends data={friends} />
         </div>
-        <Posts data={posts} />
+          <Posts
+            data={posts}
+            newPostText={newPostText}
+            dispatch={dispatch} />
       </div>
     </section>
   )

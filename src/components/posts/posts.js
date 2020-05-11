@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './posts.module.css';
 import Post from './../post/post';
 
-const Posts = ({data}) => {
+const Posts = (props) => {
 
-  const postItems = data.map((post) =>
+  const postItems = props.data.map((post) =>
     <li key={post.id}>
       <Post message={post.text} like={post.like} />
     </li>
@@ -13,8 +13,21 @@ const Posts = ({data}) => {
   let newPostElement = React.createRef();
 
   const addPost = () => {
-    let textPost = newPostElement.current.value;
-    console.log(textPost)
+    props.dispatch({
+      type: 'ADD_POST',
+    });
+    props.dispatch({
+      type: 'UPDATE_POST_MESSAGE',
+      payload: '',
+    });
+  }
+
+  const onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.dispatch({
+      type: 'UPDATE_POST_MESSAGE',
+      payload: text,
+    });
   }
 
   return (
@@ -23,8 +36,10 @@ const Posts = ({data}) => {
         <textarea
           className={styles.textarea}
           placeholder="What's new?"
-          ref={newPostElement}>
-        </textarea>
+          ref={newPostElement}
+          onChange={onPostChange}
+          value={props.newPostText}
+          />
         <button
           className={styles.btn}
           onClick={addPost}>

@@ -1,6 +1,5 @@
-export default class MockService {
-
-  data = {
+const store = {
+  _data: {
     dialogPage: {
       dialogs: [
         {id: 1, name: 'Ann'},
@@ -22,6 +21,7 @@ export default class MockService {
         {id: 3, text: 'Go to kitchen', like: 9},
         {id: 4, text: 'Hello people!', like: 21}
       ],
+      newPostText: '',
       friends: [
         {id: 1, name: 'Aang', src:'https://img.cartoongoodies.com/wp-content/uploads/2019/11/Avatar-The-Last-Airbender-Aang-head.png'},
         {id: 2, name: 'Zuco', src:'https://vignette.wikia.nocookie.net/avatar/images/4/4b/Zuko.png/revision/latest?cb=20180630112142'},
@@ -29,5 +29,39 @@ export default class MockService {
         {id: 4, name: 'Toph', src:'https://vignette.wikia.nocookie.net/avatar/images/4/46/Toph_Beifong.png/revision/latest?cb=20131230122047'},
       ]
     }
-  }
+  },
+
+  _callSubscriber() {
+    console.log("State update");
+  },
+
+  getData() {
+    return this._data;
+  },
+
+  dispatch(action) {
+    switch (action.type) {
+      case 'ADD_POST':
+        let newPost = {
+          id: 5,
+          text: this._data.profilePage.newPostText,
+          like: 0
+        };
+        this._data.profilePage.posts.push(newPost);
+        this._callSubscriber(this._data);
+
+        case 'UPDATE_POST_MESSAGE':
+          this._data.profilePage.newPostText = action.payload;
+          this._callSubscriber(this._data);
+
+      default:
+        return this._data;
+    }
+  },
+
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  },
 };
+
+export default store;
