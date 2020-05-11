@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './posts.module.css';
 import Post from './../post/post';
-import { addPostActionCreator, updatePostMessage } from './../../actions';
+import { addPostCreator, updatePostMessageCreator, } from './../../actions';
 
 const Posts = (props) => {
 
@@ -14,13 +14,14 @@ const Posts = (props) => {
   let newPostElement = React.createRef();
 
   const addPost = () => {
-    props.dispatch(addPostActionCreator());
-    props.dispatch(updatePostMessage(''));
+    props.dispatch(addPostCreator());
+    props.dispatch(updatePostMessageCreator(''));
   }
 
-  const onPostChange = () => {
-    let text = newPostElement.current.value;
-    props.dispatch(updatePostMessage(text));
+  const onPostChange = (e) => {
+    // let text = newPostElement.current.value;
+    let text = e.target.value;
+    props.dispatch(updatePostMessageCreator(text));
   }
 
   return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './dialogs.module.css';
 import { Link } from 'react-router-dom';
+import { updateNewMessageCreator, sendMessageCreator } from './../../../actions';
 
 const Dialog = ({name, id}) => {
   return (
@@ -18,9 +19,10 @@ const Message = ({msg}) => {
   );
 };
 
-const DialogPage = ({data}) => {
+const DialogPage = ({data, dispatch}) => {
+  console.log(data);
 
-  const { dialogs, messages} = data;
+  const { dialogs, messages, newMessageText } = data;
   const dialogsItems = dialogs.map((d) =>
     <li key={d.id}>
       <Dialog name={d.name}/>
@@ -33,14 +35,40 @@ const DialogPage = ({data}) => {
     </li>
   );
 
+  const sendMessage = () => {
+    dispatch(sendMessageCreator());
+    dispatch(updateNewMessageCreator(''));
+  };
+
+  const updateTextMessage = (e) => {
+    let currentText = e.target.value;
+    dispatch(updateNewMessageCreator(currentText));
+  };
+
   return (
     <section className={styles.block}>
-      <ul className={styles.dialogList}>
-        {dialogsItems}
-      </ul>
-      <ul className={styles.messageList}>
-        {messageItems}
-      </ul>
+      <div className={styles.left}>
+        <ul className={styles.dialogList}>
+          {dialogsItems}
+        </ul>
+      </div>
+      <div className={styles.right}>
+        <ul className={styles.messageList}>
+          {messageItems}
+        </ul>
+        <div className={styles.messageBlock}>
+          <textarea
+            className={styles.textarea}
+            placeholder="Enter your message"
+            onChange={updateTextMessage}
+            value={newMessageText} />
+          <button
+            className={styles.btn}
+            onClick={sendMessage}>
+            Send
+          </button>
+        </div>
+      </div>
     </section>
   )
 };

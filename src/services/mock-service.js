@@ -13,6 +13,7 @@ const store = {
         {id: 3, message: 'Go to street!'},
         {id: 4, message: 'Hello world!!!'}
       ],
+      newMessageText: '',
     },
     profilePage: {
       posts: [
@@ -52,6 +53,18 @@ const store = {
 
         case 'UPDATE_POST_MESSAGE':
           this._data.profilePage.newPostText = action.payload;
+          this._callSubscriber(this._data);
+
+        case 'SEND_MESSAGE':
+          let newMsg = {
+            id: 6,
+            message: this._data.dialogPage.newMessageText,
+          };
+          this._data.dialogPage.messages.push(newMsg);
+          this._callSubscriber(this._data);
+
+        case 'UPDATE_MESSAGE_TEXT':
+          this._data.dialogPage.newMessageText = action.payload;
           this._callSubscriber(this._data);
 
       default:
