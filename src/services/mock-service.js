@@ -1,3 +1,6 @@
+import profileReducer from '../reducers/profile-reducer';
+import dialogsReducer from '../reducers/dialogs-reducer';
+
 const store = {
   _data: {
     dialogPage: {
@@ -41,35 +44,11 @@ const store = {
   },
 
   dispatch(action) {
-    switch (action.type) {
-      case 'ADD_POST':
-        let newPost = {
-          id: 5,
-          text: this._data.profilePage.newPostText,
-          like: 0
-        };
-        this._data.profilePage.posts.push(newPost);
-        this._callSubscriber(this._data);
 
-        case 'UPDATE_POST_MESSAGE':
-          this._data.profilePage.newPostText = action.payload;
-          this._callSubscriber(this._data);
+    this._data.profilePage = profileReducer(this._data.profilePage, action);
+    this._data.dialogPage = dialogsReducer(this._data.dialogPage, action);
 
-        case 'SEND_MESSAGE':
-          let newMsg = {
-            id: 6,
-            message: this._data.dialogPage.newMessageText,
-          };
-          this._data.dialogPage.messages.push(newMsg);
-          this._callSubscriber(this._data);
-
-        case 'UPDATE_MESSAGE_TEXT':
-          this._data.dialogPage.newMessageText = action.payload;
-          this._callSubscriber(this._data);
-
-      default:
-        return this._data;
-    }
+    this._callSubscriber(this._data);
   },
 
   subscribe(observer) {
