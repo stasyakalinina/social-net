@@ -3,8 +3,9 @@ import styles from './posts.module.css';
 import Post from './../post/post';
 
 const Posts = (props) => {
+  console.log(props);
 
-  const postItems = props.data.map((post) =>
+  const postItems = props.data.posts.map((post) =>
     <li key={post.id}>
       <Post message={post.text} like={post.like} />
     </li>

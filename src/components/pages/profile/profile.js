@@ -4,9 +4,9 @@ import Intro from '../../intro/intro';
 import PostsContainer from '../../posts/posts-container';
 import Friends from '../../friends/friends';
 
-const ProfilePage = ({state, dispatch}) => {
+const ProfilePage = () => {
 
-  const {profilePage: { friends, posts, newPostText}} = state;
+  // const {profilePage: { friends, posts, newPostText}} = state;
 
   return (
     <section className={styles.block}>
@@ -14,12 +14,9 @@ const ProfilePage = ({state, dispatch}) => {
       <div className={styles.content}>
         <div className={styles.wrapper}>
           <Intro />
-          <Friends data={friends} />
+          {/* <Friends data={friends} /> */}
         </div>
-        <PostsContainer
-          data={posts}
-          newPostText={newPostText}
-          dispatch={dispatch}/>
+        <PostsContainer />
       </div>
     </section>
   )

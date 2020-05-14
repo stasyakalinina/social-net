@@ -6,7 +6,6 @@ import './app.css';
 import { ProfilePage, DialogPage } from '../pages';
 
 function App(props) {
-  // console.log(props);
 
   return (
       <div className="app">
@@ -16,7 +15,7 @@ function App(props) {
           <Route
             path="/profile"
             render={ () =>
-              <ProfilePage store={props} />}
+              <ProfilePage />}
           />
           <Route
             path="/dialogs"
