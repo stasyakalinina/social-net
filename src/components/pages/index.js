@@ -1,5 +1,5 @@
-import ProfilePage from './profile/profile';
-import DialogPage from './dialogs/dialogs';
+import ProfilePage from './profile-page/profile-page';
+import DialogPage from './dialogs-page/dialogs-page';
 
 export {
   ProfilePage,

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './profile.module.css';
+import styles from './profile-page.module.css';
 import Intro from '../../intro/intro';
 import PostsContainer from '../../posts/posts-container';
 import Friends from '../../friends/friends';

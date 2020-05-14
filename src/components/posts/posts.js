@@ -5,7 +5,7 @@ import Post from './../post/post';
 const Posts = (props) => {
   console.log(props);
 
-  const postItems = props.data.posts.map((post) =>
+  const postItems = props.posts.map((post) =>
     <li key={post.id}>
       <Post message={post.text} like={post.like} />
     </li>
@@ -14,11 +14,13 @@ const Posts = (props) => {
   let newPostElement = React.createRef();
 
   const onAddPost = () => {
+    // debugger;
     props.addPost();
   }
 
   const onPostChange = (e) => {
     let text = e.target.value;
+    // debugger;
     props.updatePostText(text);
   }
 

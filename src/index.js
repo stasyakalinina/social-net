@@ -3,24 +3,16 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/app/app';
 import store from './store';
-import { StoreProvider } from './store-context/store-context';
-
-export const renderEntireTree = (state) => {
-
-  ReactDOM.render(
-    <React.StrictMode>
-      <StoreProvider value={store}>
-        <Router>
-          <App state={state} dispatch={store.dispatch.bind(store)} />
-        </Router>
-      </StoreProvider>
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
-};
+import { Provider } from 'react-redux';
 
 
-renderEntireTree(store.getState());
-store.subscribe(() => {
-  renderEntireTree(store.getState())
-});
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);

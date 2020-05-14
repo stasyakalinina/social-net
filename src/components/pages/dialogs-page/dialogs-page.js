@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './dialogs.module.css';
+import styles from './dialogs-page.module.css';
 import { Link } from 'react-router-dom';
-import { updateNewMessageCreator, sendMessageCreator } from './../../../actions';
+import { updateNewMessageCreator, sendMessageCreator } from '../../../actions';
 
 const Dialog = ({name, id}) => {
   return (
