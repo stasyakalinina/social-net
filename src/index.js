@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/app/app';
-import store from './services/mock-service';
+import store from './store';
 
-export const renderEntireTree = (data) => {
+export const renderEntireTree = (state) => {
+
   ReactDOM.render(
     <React.StrictMode>
       <Router>
-        <App data={data} dispatch={store.dispatch.bind(store)} />
+        <App state={state} dispatch={store.dispatch.bind(store)} />
       </Router>
     </React.StrictMode>,
     document.getElementById('root')
@@ -16,5 +17,7 @@ export const renderEntireTree = (data) => {
 };
 
 
-renderEntireTree(store.getData());
-store.subscribe(renderEntireTree);
+renderEntireTree(store.getState());
+store.subscribe(() => {
+  renderEntireTree(store.getState())
+});

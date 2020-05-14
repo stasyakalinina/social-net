@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './posts.module.css';
 import Post from './../post/post';
-import { addPostCreator, updatePostMessageCreator, } from './../../actions';
 
 const Posts = (props) => {
 
@@ -13,15 +12,13 @@ const Posts = (props) => {
 
   let newPostElement = React.createRef();
 
-  const addPost = () => {
-    props.dispatch(addPostCreator());
-    props.dispatch(updatePostMessageCreator(''));
+  const onAddPost = () => {
+    props.addPost();
   }
 
   const onPostChange = (e) => {
-    // let text = newPostElement.current.value;
     let text = e.target.value;
-    props.dispatch(updatePostMessageCreator(text));
+    props.updatePostText(text);
   }
 
   return (
@@ -36,7 +33,7 @@ const Posts = (props) => {
           />
         <button
           className={styles.btn}
-          onClick={addPost}>
+          onClick={onAddPost}>
           Add post
         </button>
       </div>

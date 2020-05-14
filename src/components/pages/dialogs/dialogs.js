@@ -19,10 +19,9 @@ const Message = ({msg}) => {
   );
 };
 
-const DialogPage = ({data, dispatch}) => {
-  console.log(data);
+const DialogPage = ({state, dispatch}) => {
 
-  const { dialogs, messages, newMessageText } = data;
+  const { dialogs, messages, newMessageText } = state.dialogPage;
   const dialogsItems = dialogs.map((d) =>
     <li key={d.id}>
       <Dialog name={d.name}/>

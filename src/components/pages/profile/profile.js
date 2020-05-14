@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './profile.module.css';
 import Intro from '../../intro/intro';
-import Posts from '../../posts/posts';
+import PostsContainer from '../../posts/posts-container';
 import Friends from '../../friends/friends';
 
-const ProfilePage = (props) => {
-  const {data: { friends, posts, newPostText}, dispatch } = props;
+const ProfilePage = ({state, dispatch}) => {
+
+  const {profilePage: { friends, posts, newPostText}} = state;
 
   return (
     <section className={styles.block}>
@@ -15,10 +16,10 @@ const ProfilePage = (props) => {
           <Intro />
           <Friends data={friends} />
         </div>
-          <Posts
-            data={posts}
-            newPostText={newPostText}
-            dispatch={dispatch} />
+        <PostsContainer
+          data={posts}
+          newPostText={newPostText}
+          dispatch={dispatch}/>
       </div>
     </section>
   )
