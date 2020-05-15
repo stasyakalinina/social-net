@@ -24,9 +24,33 @@ const sendMessageCreator = () => {
   }
 };
 
+const followCreator = (id) => {
+  return {
+    type: 'FOLLOW_FRIEND',
+    payload: id,
+  }
+};
+
+const unFollowCreator = (id) => {
+  return {
+    type: 'UNFOLLOW_FRIEND',
+    payload: id,
+  }
+};
+
+const setUsersCreator = (users) => {
+  return {
+    type: 'SET_USERS',
+    payload: users
+  }
+};
+
 export {
   addPostCreator,
   updatePostMessageCreator,
   updateNewMessageCreator,
-  sendMessageCreator
+  sendMessageCreator,
+  followCreator,
+  unFollowCreator,
+  setUsersCreator
 }
