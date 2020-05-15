@@ -3,7 +3,6 @@ import styles from './posts.module.css';
 import Post from './../post/post';
 
 const Posts = (props) => {
-  console.log(props);
 
   const postItems = props.posts.map((post) =>
     <li key={post.id}>
