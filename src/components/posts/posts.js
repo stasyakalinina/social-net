@@ -14,13 +14,11 @@ const Posts = (props) => {
   let newPostElement = React.createRef();
 
   const onAddPost = () => {
-    // debugger;
     props.addPost();
   }
 
   const onPostChange = (e) => {
     let text = e.target.value;
-    // debugger;
     props.updatePostText(text);
   }
 
