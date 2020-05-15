@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './friends.module.css';
+import { connect } from 'react-redux';
 
+const Friends = ({friends}) => {
 
-const Friends = ({data}) => {
-
-  const friendsItems = data.map(friend =>
+  const friendsItems = friends.map(friend =>
     <li key={friend.id} className={styles.item}>
       <img src={friend.src} className={styles.ava} alt="friend-ava" />
       <span className={styles.name}>{friend.name}</span>
@@ -21,4 +21,10 @@ const Friends = ({data}) => {
   )
 };
 
-export default Friends;
+const mapStateToProps = (state) => {
+  return {
+    friends: state.profilePage.friends,
+  }
+};
+
+export default connect(mapStateToProps)(Friends);

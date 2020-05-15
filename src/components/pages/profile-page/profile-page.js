@@ -14,7 +14,7 @@ const ProfilePage = () => {
       <div className={styles.content}>
         <div className={styles.wrapper}>
           <Intro />
-          {/* <Friends data={friends} /> */}
+          <Friends />
         </div>
         <PostsContainer />
       </div>

@@ -14,13 +14,11 @@ function App(props) {
         <main className="app__content">
           <Route
             path="/profile"
-            render={ () =>
-              <ProfilePage />}
+           component={ProfilePage}
           />
           <Route
             path="/dialogs"
-            render={ () =>
-              <DialogPage store={props} />}
+            component={DialogPage}
           />
         </main>
       </div>
