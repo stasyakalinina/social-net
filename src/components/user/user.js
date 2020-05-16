@@ -1,13 +1,18 @@
 import React from 'react';
 import styles from './user.module.css';
+import userPhoto from './../../assets/images/ava-default.png'
 
 const User = (props) => {
 
   const { data } = props;
+
   return (
     <div className={styles.block} id={data.id} >
       <div className={styles.left}>
-        <img className={styles.ava} src={data.src} alt="user ava"/>
+        <img
+          className={styles.ava}
+          src={data.photos.small != null ? data.photos.small : userPhoto}
+          alt="user ava"/>
         <button
           className={styles.btn}
           onClick={() => {
@@ -22,8 +27,8 @@ const User = (props) => {
           <p>{data.status}</p>
         </div>
         <div className={styles.location}>
-          <p>{data.location.city}</p>
-          <p>{data.location.country}</p>
+          <p>{"data.location.city"}</p>
+          <p>{"data.location.country"}</p>
         </div>
       </div>
     </div>

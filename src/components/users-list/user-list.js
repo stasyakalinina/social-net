@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import User from '../user/user';
 import { followCreator, unFollowCreator, setUsersCreator } from './../../actions';
 import styles from './user-list.module.css';
-
+import * as axios from 'axios';
 
 const UsersList = (props) => {
-  const { users,followUser, unfollowUser } = props;
+
+  const { users, followUser, unfollowUser } = props;
 
   const usersItems = users.map(user => {
     return (
@@ -23,6 +24,20 @@ const UsersList = (props) => {
       { usersItems }
     </ul>
   );
+};
+
+class UsersListContainer extends Component {
+
+  componentDidMount() {
+    axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+      this.props.setUsers(response.data.items);
+    });
+  }
+
+  render() {
+    const { users, followUser, unfollowUser } = this.props;
+    return <UsersList users={users} followUser={followUser} unfollowUser={unfollowUser} />
+  }
 };
 
 const mapStateToProps = (state) => {
@@ -45,4 +60,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersList);
+export default connect(mapStateToProps, mapDispatchToProps)(UsersListContainer);
