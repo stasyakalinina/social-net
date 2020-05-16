@@ -10,6 +10,12 @@ body {
   background-color: #e9ecef;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .app {
   display: grid;
   grid-template-columns: 2fr 10fr;

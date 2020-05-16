@@ -9,6 +9,7 @@ const initialState = {
         country: 'Mexico'
       },
       followed: false,
+      status: 'I love my cat'
     },
     {
       id: 2,
@@ -19,6 +20,7 @@ const initialState = {
         country: 'Bogota'
       },
       followed: true,
+      status: 'I drive my car'
     },
     {
       id: 3,
@@ -29,6 +31,7 @@ const initialState = {
         country: 'Rio de Janeiro'
       },
       followed: false,
+      status: 'I eat my soup'
     },
     {
       id: 4,
@@ -39,6 +42,7 @@ const initialState = {
         country: 'Lima'
       },
       followed: true,
+      status: 'I watch movies'
     },
   ]
 };

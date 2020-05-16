@@ -4,8 +4,8 @@ import UsersList from '../../users-list/user-list';
 
 const UsersPage = () => {
   return (
-    <section>
-      <h2>Users</h2>
+    <section className={styles.block}>
+      <h2 className={styles.title}>Users</h2>
       <UsersList />
     </section>
   );
