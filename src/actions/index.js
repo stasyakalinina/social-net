@@ -45,6 +45,20 @@ const setUsersCreator = (users) => {
   }
 };
 
+const setCurrentPageCreator = (page) => {
+  return {
+    type: 'SET_CURRENT_PAGE',
+    payload: page
+  }
+};
+const setTotalUsersCreator = (totalCount) => {
+  return {
+    type: 'SET_TOTAL_USERS_COUNT',
+    payload: totalCount
+  }
+};
+
+
 export {
   addPostCreator,
   updatePostMessageCreator,
@@ -52,5 +66,7 @@ export {
   sendMessageCreator,
   followCreator,
   unFollowCreator,
-  setUsersCreator
+  setUsersCreator,
+  setCurrentPageCreator,
+  setTotalUsersCreator
 }

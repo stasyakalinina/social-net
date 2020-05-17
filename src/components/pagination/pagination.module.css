@@ -1,0 +1,10 @@
+.block {
+  padding: 1em 0;
+}
+
+.btn {
+  font: inherit;
+}
+.selectedPage {
+  font-weight: 700;
+}
