@@ -3,6 +3,7 @@ const initialState = {
   pageSize: 100,
   totalUsersCount: 0,
   currentPage: 3,
+  loading: true,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -52,7 +53,13 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         totalUsersCount: action.payload
-      }
+      };
+
+    case 'TOGGLE_LOADING':
+      return {
+        ...state,
+        loading: action.payload
+      };
 
     default:
       return state;

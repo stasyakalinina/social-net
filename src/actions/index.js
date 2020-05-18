@@ -51,6 +51,7 @@ const setCurrentPageCreator = (page) => {
     payload: page
   }
 };
+
 const setTotalUsersCreator = (totalCount) => {
   return {
     type: 'SET_TOTAL_USERS_COUNT',
@@ -58,6 +59,12 @@ const setTotalUsersCreator = (totalCount) => {
   }
 };
 
+const toggleLoadingCreator = (isLoading) => {
+  return {
+    type: 'TOGGLE_LOADING',
+    payload: isLoading
+  }
+};
 
 export {
   addPostCreator,
@@ -68,5 +75,6 @@ export {
   unFollowCreator,
   setUsersCreator,
   setCurrentPageCreator,
-  setTotalUsersCreator
+  setTotalUsersCreator,
+  toggleLoadingCreator
 }
