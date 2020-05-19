@@ -18,7 +18,7 @@ const EnterMessage = (props) => {
 
   const onUpdateTextMessage = (e) => {
     let currentText = e.target.value;
-    props.updateTextMessage(currentText);
+    props.updateNewMessage(currentText);
   };
 
   return (
@@ -38,7 +38,7 @@ const EnterMessage = (props) => {
 };
 
 const Messages = (props) => {
-  const { messages, newMessageText, updateTextMessage, sendMessage } = props;
+  const { messages, newMessageText, updateNewMessage, sendMessage } = props;
 
   const messageItems = messages.map((m) =>
     <li key={m.id}>
@@ -53,7 +53,7 @@ const Messages = (props) => {
       </ul>
       <EnterMessage
         newMessageText={newMessageText}
-        updateTextMessage={updateTextMessage}
+        updateNewMessage={updateNewMessage}
         sendMessage={sendMessage} />
     </React.Fragment>
   );

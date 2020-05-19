@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './user.module.css';
 import userPhoto from './../../assets/images/ava-default.png'
+import { Link } from 'react-router-dom';
 
 const User = (props) => {
 
@@ -9,10 +10,12 @@ const User = (props) => {
   return (
     <div className={styles.block} id={data.id} >
       <div className={styles.left}>
-        <img
+        <Link to={'/profile/' + data.id}>
+          <img
           className={styles.ava}
           src={data.photos.small != null ? data.photos.small : userPhoto}
           alt="user ava"/>
+        </Link>
         <button
           className={styles.btn}
           onClick={() => {

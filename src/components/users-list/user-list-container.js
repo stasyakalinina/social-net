@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import * as axios from 'axios';
 import { connect } from 'react-redux';
-import { followCreator,
-         unFollowCreator,
-         setUsersCreator,
-         setCurrentPageCreator,
-         setTotalUsersCreator,
-         toggleLoadingCreator } from '../../actions';
+import { followUser,
+         unfollowUser,
+         setUsers,
+         setCurrentPage,
+         setTotalUsersCount,
+         toggleLoading } from '../../actions';
 import Pagination from '../pagination/pagination';
 import UsersList from './user-list';
 import Preloader from '../preloader/preloader';
@@ -81,27 +81,13 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    followUser: (userId) => {
-      dispatch(followCreator(userId));
-    },
-    unfollowUser: (userId) => {
-      dispatch(unFollowCreator(userId));
-    },
-    setUsers: (users) => {
-      dispatch(setUsersCreator(users));
-    },
-    setCurrentPage: (page) => {
-      dispatch(setCurrentPageCreator(page));
-    },
-    setTotalUsersCount: (total) => {
-      dispatch(setTotalUsersCreator(total))
-    },
-    toggleLoading: (isLoading) => {
-      dispatch(toggleLoadingCreator(isLoading))
-    },
-  }
-}
+const actions = {
+  followUser,
+  unfollowUser,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleLoading
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersListContainer);
+export default connect(mapStateToProps, actions)(UsersListContainer);

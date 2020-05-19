@@ -1,65 +1,65 @@
-const addPostCreator = () => {
+const addPost = () => {
   return {
     type: 'ADD_POST',
   }
 };
 
-const updatePostMessageCreator = (text) => {
+const updatePostMessage = (text) => {
   return {
     type: 'UPDATE_POST_MESSAGE',
     payload: text,
   }
 };
 
-const updateNewMessageCreator = (text) => {
+const updateNewMessage = (text) => {
   return {
     type: 'UPDATE_MESSAGE_TEXT',
     payload: text,
   }
 };
 
-const sendMessageCreator = () => {
+const sendMessage = () => {
   return {
     type: 'SEND_MESSAGE',
   }
 };
 
-const followCreator = (id) => {
+const followUser = (id) => {
   return {
     type: 'FOLLOW_FRIEND',
     payload: id,
   }
 };
 
-const unFollowCreator = (id) => {
+const unfollowUser = (id) => {
   return {
     type: 'UNFOLLOW_FRIEND',
     payload: id,
   }
 };
 
-const setUsersCreator = (users) => {
+const setUsers = (users) => {
   return {
     type: 'SET_USERS',
     payload: users
   }
 };
 
-const setCurrentPageCreator = (page) => {
+const setCurrentPage = (page) => {
   return {
     type: 'SET_CURRENT_PAGE',
     payload: page
   }
 };
 
-const setTotalUsersCreator = (totalCount) => {
+const setTotalUsersCount = (totalCount) => {
   return {
     type: 'SET_TOTAL_USERS_COUNT',
     payload: totalCount
   }
 };
 
-const toggleLoadingCreator = (isLoading) => {
+const toggleLoading = (isLoading) => {
   return {
     type: 'TOGGLE_LOADING',
     payload: isLoading
@@ -67,14 +67,14 @@ const toggleLoadingCreator = (isLoading) => {
 };
 
 export {
-  addPostCreator,
-  updatePostMessageCreator,
-  updateNewMessageCreator,
-  sendMessageCreator,
-  followCreator,
-  unFollowCreator,
-  setUsersCreator,
-  setCurrentPageCreator,
-  setTotalUsersCreator,
-  toggleLoadingCreator
+  addPost,
+  updatePostMessage,
+  updateNewMessage,
+  sendMessage,
+  followUser,
+  unfollowUser,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleLoading
 }
