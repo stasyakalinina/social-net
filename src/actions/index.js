@@ -66,6 +66,20 @@ const toggleLoading = (isLoading) => {
   }
 };
 
+const setUserProfile = (profile) => {
+  return {
+    type: 'SET_USER_PROFILE',
+    payload: profile,
+  }
+};
+
+const setAuthUserData = (userId, email, login) => {
+  return {
+    type: 'SET_USER_DATA',
+    payload: {userId, email, login},
+  }
+};
+
 export {
   addPost,
   updatePostMessage,
@@ -76,5 +90,7 @@ export {
   setUsers,
   setCurrentPage,
   setTotalUsersCount,
-  toggleLoading
+  toggleLoading,
+  setUserProfile,
+  setAuthUserData
 }

@@ -3,7 +3,8 @@ import {Route} from 'react-router-dom';
 import Header from '../header/header';
 import Sidebar from '../sidebar/sidebar';
 import './app.css';
-import { ProfilePage, DialogPage, UsersPage } from '../pages';
+import { DialogPage, UsersPage } from '../pages';
+import ProfileContainer from '../pages/profile-page/profile-page-container';
 
 function App(props) {
 
@@ -13,8 +14,8 @@ function App(props) {
         <Sidebar />
         <main className="app__content">
           <Route
-            path="/profile"
-           component={ProfilePage}
+            path="/profile/:userId?"
+           component={ProfileContainer}
           />
           <Route
             path="/dialogs"

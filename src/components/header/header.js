@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import styles from'./header.module.css';
+import LoginContainer from '../login/login-container';
 
 const Header = () => {
   return (
@@ -10,6 +11,7 @@ const Header = () => {
       </div>
       <div className={styles.wrapper}>
         <input type="text" placeholder="Search posts" />
+        <LoginContainer />
       </div>
     </header>
   );

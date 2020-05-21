@@ -11,7 +11,8 @@ const initialState = {
     {id: 2, name: 'Zuco', src:'https://vignette.wikia.nocookie.net/avatar/images/4/4b/Zuko.png/revision/latest?cb=20180630112142'},
     {id: 3, name: 'Katara', src:'https://theblueraft.files.wordpress.com/2010/08/katara1.png?w=700'},
     {id: 4, name: 'Toph', src:'https://vignette.wikia.nocookie.net/avatar/images/4/46/Toph_Beifong.png/revision/latest?cb=20131230122047'},
-  ]
+  ],
+  profile: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -29,14 +30,19 @@ const profileReducer = (state = initialState, action) => {
         newPostText: '',
         posts: [newPost, ...state.posts]
       }
-    }
+    };
 
-    case 'UPDATE_POST_MESSAGE': {
+    case 'UPDATE_POST_MESSAGE':
       return {
         ...state,
         newPostText: action.payload,
       };
-    }
+
+    case 'SET_USER_PROFILE':
+      return {
+        ...state,
+        profile: action.payload
+      };
 
     default:
       return state;
