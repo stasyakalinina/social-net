@@ -2,10 +2,28 @@ import React from 'react';
 import styles from './user.module.css';
 import userPhoto from './../../assets/images/ava-default.png'
 import { Link } from 'react-router-dom';
+import { followAPI } from '../../services/api';
+
 
 const User = (props) => {
 
   const { data } = props;
+
+  const onFollowUser = (id) => {
+    followAPI.followUser(id).then(data => {
+      if (data.resultCode === 0) {
+        props.followUser(id)
+      }
+    })
+  };
+
+  const onUnfollowUser = (id) => {
+    followAPI.unfollowUser(id).then(data => {
+      if (data.resultCode === 0) {
+        props.unfollowUser(id)
+      }
+    })
+  };
 
   return (
     <div className={styles.block} id={data.id} >
@@ -19,7 +37,7 @@ const User = (props) => {
         <button
           className={styles.btn}
           onClick={() => {
-            data.followed ? props.unfollowUser(data.id) : props.followUser(data.id) }
+            data.followed ? onUnfollowUser(data.id) : onFollowUser(data.id) }
           }>
             { data.followed ? 'Unfollow' : 'Follow' }
         </button>

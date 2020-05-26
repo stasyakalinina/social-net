@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import * as axios from 'axios';
 import { connect } from 'react-redux';
 import { followUser,
          unfollowUser,
@@ -10,25 +9,25 @@ import { followUser,
 import Pagination from '../pagination/pagination';
 import UsersList from './user-list';
 import Preloader from '../preloader/preloader';
+import { usersAPI } from '../../services/api';
 
 
 class UsersListContainer extends Component {
 
   componentDidMount() {
     this.props.toggleLoading(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-      .then(response => {
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
+    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+        this.props.setUsers(data.items);
+        this.props.setTotalUsersCount(data.totalCount);
         this.props.toggleLoading(false);
     });
   }
 
   getPageUsers = (page) => {
     this.props.toggleLoading(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
-      .then(response => {
-        this.props.setUsers(response.data.items);
+    usersAPI.getUsers(page, this.props.pageSize)
+      .then(data => {
+        this.props.setUsers(data.items);
         this.props.toggleLoading(false);
     });
   }

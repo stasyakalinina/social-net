@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import * as axios from 'axios';
 import { connect } from 'react-redux';
 import { setUserProfile } from '../../../actions';
 import ProfilePage from './profile-page';
 import { withRouter } from 'react-router-dom';
+import { profileAPI } from '../../../services/api';
 
 class ProfileContainer extends Component {
 
@@ -14,9 +14,9 @@ class ProfileContainer extends Component {
       userId = 2;
     }
 
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-      .then(response => {
-        this.props.setUserProfile(response.data);
+    profileAPI.getProfile(userId)
+      .then(data => {
+        this.props.setUserProfile(data);
     });
   }
 
