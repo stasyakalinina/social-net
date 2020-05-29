@@ -66,7 +66,9 @@ const usersReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        sendingRequest: action.isSending ? [...state.sendingRequest, action.userId] : state.sendingRequest.filter(id => id !== action.userId),
+        sendingRequest: action.isSending
+          ? [...state.sendingRequest, action.userId]
+          : [state.sendingRequest.filter(id => id !== action.userId)],
       };
 
     default:

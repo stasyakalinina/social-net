@@ -6,28 +6,25 @@ import { followAPI } from '../../services/api';
 
 
 const User = (props) => {
-  console.log(props);
   const { data } = props;
 
   const onFollowUser = (id) => {
-    props.toggleSendingRequest(true, data.id);
-    console.log(props);
+    props.toggleSendingRequest(true, id);
     followAPI.followUser(id).then(data => {
       if (data.resultCode === 0) {
         props.followUser(id)
       }
-      props.toggleSendingRequest(false, data.id);
-      console.log(props);
+      props.toggleSendingRequest(false, id);
     })
   };
 
   const onUnfollowUser = (id) => {
-    props.toggleSendingRequest(true, data.id);
+    props.toggleSendingRequest(true, id);
     followAPI.unfollowUser(id).then(data => {
       if (data.resultCode === 0) {
         props.unfollowUser(id)
       }
-      props.toggleSendingRequest(false, data.id);
+      props.toggleSendingRequest(false, id);
     })
   };
 
