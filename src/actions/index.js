@@ -80,6 +80,14 @@ const setAuthUserData = (userId, email, login) => {
   }
 };
 
+const toggleSendingRequest = (isSending, userId) => {
+  return {
+    type: 'TOGGLE_SENDING_REQUEST',
+    isSending,
+    userId
+  }
+};
+
 export {
   addPost,
   updatePostMessage,
@@ -92,5 +100,6 @@ export {
   setTotalUsersCount,
   toggleLoading,
   setUserProfile,
-  setAuthUserData
+  setAuthUserData,
+  toggleSendingRequest
 }

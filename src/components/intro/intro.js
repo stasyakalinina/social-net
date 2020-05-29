@@ -4,7 +4,6 @@ import ava from './girl.jpg'
 import Preloader from '../preloader/preloader';
 
 const Intro = (props) => {
-  console.log(props);
 
   if (!props.profile) {
     return <Preloader />

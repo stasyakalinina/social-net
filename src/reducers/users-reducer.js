@@ -4,6 +4,7 @@ const initialState = {
   totalUsersCount: 0,
   currentPage: 1,
   loading: true,
+  sendingRequest: []
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -59,6 +60,13 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: action.payload
+      };
+
+    case 'TOGGLE_SENDING_REQUEST':
+
+      return {
+        ...state,
+        sendingRequest: action.isSending ? [...state.sendingRequest, action.userId] : state.sendingRequest.filter(id => id !== action.userId),
       };
 
     default:

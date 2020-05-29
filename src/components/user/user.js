@@ -6,22 +6,28 @@ import { followAPI } from '../../services/api';
 
 
 const User = (props) => {
-
+  console.log(props);
   const { data } = props;
 
   const onFollowUser = (id) => {
+    props.toggleSendingRequest(true, data.id);
+    console.log(props);
     followAPI.followUser(id).then(data => {
       if (data.resultCode === 0) {
         props.followUser(id)
       }
+      props.toggleSendingRequest(false, data.id);
+      console.log(props);
     })
   };
 
   const onUnfollowUser = (id) => {
+    props.toggleSendingRequest(true, data.id);
     followAPI.unfollowUser(id).then(data => {
       if (data.resultCode === 0) {
         props.unfollowUser(id)
       }
+      props.toggleSendingRequest(false, data.id);
     })
   };
 
@@ -36,6 +42,7 @@ const User = (props) => {
         </Link>
         <button
           className={styles.btn}
+          disabled={props.sendingRequest.some(id => id === data.id)}
           onClick={() => {
             data.followed ? onUnfollowUser(data.id) : onFollowUser(data.id) }
           }>

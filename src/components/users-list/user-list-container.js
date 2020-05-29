@@ -5,7 +5,8 @@ import { followUser,
          setUsers,
          setCurrentPage,
          setTotalUsersCount,
-         toggleLoading } from '../../actions';
+         toggleLoading,
+         toggleSendingRequest } from '../../actions';
 import Pagination from '../pagination/pagination';
 import UsersList from './user-list';
 import Preloader from '../preloader/preloader';
@@ -41,6 +42,8 @@ class UsersListContainer extends Component {
       currentPage,
       setCurrentPage,
       loading,
+      sendingRequest,
+      toggleSendingRequest
     } = this.props;
 
     const hasData = !loading;
@@ -57,7 +60,9 @@ class UsersListContainer extends Component {
         <UsersList
           users={users}
           followUser={followUser}
-          unfollowUser={unfollowUser} />
+          unfollowUser={unfollowUser}
+          sendingRequest={sendingRequest}
+          toggleSendingRequest={toggleSendingRequest} />
       </>
       : null;
 
@@ -76,7 +81,8 @@ const mapStateToProps = (state) => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
-    loading: state.usersPage.loading
+    loading: state.usersPage.loading,
+    sendingRequest: state.usersPage.sendingRequest
   }
 };
 
@@ -86,7 +92,8 @@ const actions = {
   setUsers,
   setCurrentPage,
   setTotalUsersCount,
-  toggleLoading
+  toggleLoading,
+  toggleSendingRequest
 };
 
 export default connect(mapStateToProps, actions)(UsersListContainer);

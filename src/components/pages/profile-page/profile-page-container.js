@@ -11,7 +11,7 @@ class ProfileContainer extends Component {
 
     let userId = this.props.match.params.userId;
     if (!userId) {
-      userId = 2;
+      userId = 8267;
     }
 
     profileAPI.getProfile(userId)
