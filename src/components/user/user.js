@@ -2,30 +2,16 @@ import React from 'react';
 import styles from './user.module.css';
 import userPhoto from './../../assets/images/ava-default.png'
 import { Link } from 'react-router-dom';
-import { followAPI } from '../../services/api';
-
 
 const User = (props) => {
-  const { data } = props;
+  const { data, follow, unfollow } = props;
 
   const onFollowUser = (id) => {
-    props.toggleSendingRequest(true, id);
-    followAPI.followUser(id).then(data => {
-      if (data.resultCode === 0) {
-        props.followUser(id)
-      }
-      props.toggleSendingRequest(false, id);
-    })
+    follow(id);
   };
 
   const onUnfollowUser = (id) => {
-    props.toggleSendingRequest(true, id);
-    followAPI.unfollowUser(id).then(data => {
-      if (data.resultCode === 0) {
-        props.unfollowUser(id)
-      }
-      props.toggleSendingRequest(false, id);
-    })
+    unfollow(id);
   };
 
   return (

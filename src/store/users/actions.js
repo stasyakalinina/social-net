@@ -1,13 +1,13 @@
-import { usersAPI } from '../../services/api';
+import { usersAPI, followAPI } from '../../services/api';
 
-export const followUser = (id) => {
+export const followUserSuccess = (id) => {
   return {
     type: 'FOLLOW_FRIEND',
     payload: id,
   }
 };
 
-export const unfollowUser = (id) => {
+export const unfollowUserSuccess = (id) => {
   return {
     type: 'UNFOLLOW_FRIEND',
     payload: id,
@@ -53,11 +53,34 @@ export const toggleSendingRequest = (isSending, userId) => {
 export const getUsersThunkCreator = (currentPage, pageSize) => {
   return (dispatch) => {
     dispatch(toggleLoading(true));
-
     usersAPI.getUsers(currentPage, pageSize).then(data => {
         dispatch(setUsers(data.items));
         dispatch(setTotalUsersCount(data.totalCount));
         dispatch(toggleLoading(false));
     });
+  }
+};
+
+export const follow = (id) => {
+  return (dispatch) => {
+    dispatch(toggleSendingRequest(true, id));
+    followAPI.followUser(id).then(data => {
+      if (data.resultCode === 0) {
+        dispatch(followUserSuccess(id));
+      }
+      dispatch(toggleSendingRequest(false, id));
+    })
+  }
+};
+
+export const unfollow = (id) => {
+  return (dispatch) => {
+    dispatch(toggleSendingRequest(true, id));
+    followAPI.unfollowUser(id).then(data => {
+      if (data.resultCode === 0) {
+        dispatch(unfollowUserSuccess(id));
+      }
+      dispatch(toggleSendingRequest(false, id));
+    })
   }
 };

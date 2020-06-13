@@ -1,45 +1,32 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { followUser,
-         unfollowUser,
-         setUsers,
+import { follow, unfollow,
          setCurrentPage,
-         setTotalUsersCount,
-         toggleLoading,
-         toggleSendingRequest,
          getUsersThunkCreator } from '../../store/users/actions';
 import Pagination from '../pagination/pagination';
 import UsersList from './user-list';
 import Preloader from '../preloader/preloader';
-import { usersAPI } from '../../services/api';
-
 
 class UsersListContainer extends Component {
 
   componentDidMount() {
-    this.props.getUsersThunkCreator();
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
 
   getPageUsers = (page) => {
-    this.props.toggleLoading(true);
-    usersAPI.getUsers(page, this.props.pageSize)
-      .then(data => {
-        this.props.setUsers(data.items);
-        this.props.toggleLoading(false);
-    });
+    this.props.getUsers(page, this.props.pageSize);
   }
 
   render() {
     const { users,
-      followUser,
-      unfollowUser,
+      follow,
+      unfollow,
       pageSize,
       totalUsersCount,
       currentPage,
       setCurrentPage,
       loading,
       sendingRequest,
-      toggleSendingRequest
     } = this.props;
 
     const hasData = !loading;
@@ -55,10 +42,10 @@ class UsersListContainer extends Component {
         />
         <UsersList
           users={users}
-          followUser={followUser}
-          unfollowUser={unfollowUser}
+          follow={follow}
+          unfollow={unfollow}
           sendingRequest={sendingRequest}
-          toggleSendingRequest={toggleSendingRequest} />
+        />
       </>
       : null;
 
@@ -83,14 +70,10 @@ const mapStateToProps = (state) => {
 };
 
 const actions = {
-  followUser,
-  unfollowUser,
-  setUsers,
+  follow,
+  unfollow,
   setCurrentPage,
-  setTotalUsersCount,
-  toggleLoading,
-  toggleSendingRequest,
-  getUsersThunkCreator
+  getUsers: getUsersThunkCreator
 };
 
 export default connect(mapStateToProps, actions)(UsersListContainer);
