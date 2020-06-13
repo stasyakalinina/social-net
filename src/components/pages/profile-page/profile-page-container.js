@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setUserProfile } from '../../../actions';
+import { setUserProfile } from '../../../store/profile/actions';
 import ProfilePage from './profile-page';
 import { withRouter } from 'react-router-dom';
 import { profileAPI } from '../../../services/api';

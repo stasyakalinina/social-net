@@ -6,7 +6,8 @@ import { followUser,
          setCurrentPage,
          setTotalUsersCount,
          toggleLoading,
-         toggleSendingRequest } from '../../actions';
+         toggleSendingRequest,
+         getUsersThunkCreator } from '../../store/users/actions';
 import Pagination from '../pagination/pagination';
 import UsersList from './user-list';
 import Preloader from '../preloader/preloader';
@@ -16,12 +17,7 @@ import { usersAPI } from '../../services/api';
 class UsersListContainer extends Component {
 
   componentDidMount() {
-    this.props.toggleLoading(true);
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-        this.props.setUsers(data.items);
-        this.props.setTotalUsersCount(data.totalCount);
-        this.props.toggleLoading(false);
-    });
+    this.props.getUsersThunkCreator();
   }
 
   getPageUsers = (page) => {
@@ -93,7 +89,8 @@ const actions = {
   setCurrentPage,
   setTotalUsersCount,
   toggleLoading,
-  toggleSendingRequest
+  toggleSendingRequest,
+  getUsersThunkCreator
 };
 
 export default connect(mapStateToProps, actions)(UsersListContainer);

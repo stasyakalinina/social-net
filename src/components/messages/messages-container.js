@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateNewMessage, sendMessage } from './../../actions';
+import { updateNewMessage, sendMessage } from './../../store/dialogs/actions';
 import Messages from './messages';
 
 const mapStateToProps = (state) => {

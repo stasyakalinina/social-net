@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setAuthUserData, toggleLoading, setUserProfile } from '../../actions';
+import { setAuthUserData } from '../../store/auth/actions';
+import { setUserProfile } from '../../store/profile/actions';
+import { toggleLoading } from '../../store/users/actions';
 import Login from './login';
 import { authAPI } from '../../services/api';
 

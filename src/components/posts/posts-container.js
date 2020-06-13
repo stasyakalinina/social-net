@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addPost, updatePostMessage } from './../../actions';
+import { addPost, updatePostMessage } from '../../store/profile/actions';
 import Posts from './posts';
 
 const mapStateToProps = (state) => {
