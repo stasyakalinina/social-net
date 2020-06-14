@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setUserProfile } from '../../../store/profile/actions';
+import { getUserProfile } from '../../../store/profile/actions';
 import ProfilePage from './profile-page';
 import { withRouter } from 'react-router-dom';
-import { profileAPI } from '../../../services/api';
+
 
 class ProfileContainer extends Component {
 
   componentDidMount() {
-
     let userId = this.props.match.params.userId;
     if (!userId) {
       userId = 8267;
     }
 
-    profileAPI.getProfile(userId)
-      .then(data => {
-        this.props.setUserProfile(data);
-    });
+    this.props.getUserProfile(userId);
   }
 
   render() {
@@ -33,5 +29,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-
-export default connect(mapStateToProps, {setUserProfile})(withRouter(ProfileContainer));
+export default connect(mapStateToProps, {getUserProfile})(withRouter(ProfileContainer));

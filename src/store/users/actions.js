@@ -50,37 +50,31 @@ export const toggleSendingRequest = (isSending, userId) => {
   }
 };
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
-  return (dispatch) => {
-    dispatch(toggleLoading(true));
-    usersAPI.getUsers(currentPage, pageSize).then(data => {
-        dispatch(setUsers(data.items));
-        dispatch(setTotalUsersCount(data.totalCount));
-        dispatch(toggleLoading(false));
-    });
-  }
+export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch) => {
+  dispatch(toggleLoading(true));
+  usersAPI.getUsers(currentPage, pageSize).then(data => {
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUsersCount(data.totalCount));
+      dispatch(toggleLoading(false));
+  });
 };
 
-export const follow = (id) => {
-  return (dispatch) => {
-    dispatch(toggleSendingRequest(true, id));
-    followAPI.followUser(id).then(data => {
-      if (data.resultCode === 0) {
-        dispatch(followUserSuccess(id));
-      }
-      dispatch(toggleSendingRequest(false, id));
-    })
-  }
+export const follow = (id) => (dispatch) => {
+  dispatch(toggleSendingRequest(true, id));
+  followAPI.followUser(id).then(data => {
+    if (data.resultCode === 0) {
+      dispatch(followUserSuccess(id));
+    }
+    dispatch(toggleSendingRequest(false, id));
+  })
 };
 
-export const unfollow = (id) => {
-  return (dispatch) => {
-    dispatch(toggleSendingRequest(true, id));
-    followAPI.unfollowUser(id).then(data => {
-      if (data.resultCode === 0) {
-        dispatch(unfollowUserSuccess(id));
-      }
-      dispatch(toggleSendingRequest(false, id));
-    })
-  }
+export const unfollow = (id) => (dispatch) => {
+  dispatch(toggleSendingRequest(true, id));
+  followAPI.unfollowUser(id).then(data => {
+    if (data.resultCode === 0) {
+      dispatch(unfollowUserSuccess(id));
+    }
+    dispatch(toggleSendingRequest(false, id));
+  })
 };

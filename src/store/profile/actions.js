@@ -1,3 +1,5 @@
+import { profileAPI } from '../../services/api';
+
 export const addPost = () => {
   return {
     type: 'ADD_POST',
@@ -16,4 +18,11 @@ export const setUserProfile = (profile) => {
     type: 'SET_USER_PROFILE',
     payload: profile,
   }
+};
+
+export const getUserProfile = (userId) => (dispatch) => {
+  return profileAPI.getProfile(userId)
+    .then(data => {
+      dispatch(setUserProfile(data));
+  });
 };

@@ -45,4 +45,4 @@ export {
   followAPI,
   authAPI,
   profileAPI
-}
+};
