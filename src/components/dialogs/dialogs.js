@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './dialogs.module.css';
+import withAuthRedirect from '../hoc/withAuthRedirect';
 
 const Dialog = ({name, id}) => {
   return (
@@ -10,7 +12,8 @@ const Dialog = ({name, id}) => {
   );
 };
 
-const Dialogs = ({dialogs}) => {
+const Dialogs = (props) => {
+  const {dialogs} = props;
 
   const dialogsItems = dialogs.map((d) =>
     <li key={d.id}>
@@ -25,4 +28,14 @@ const Dialogs = ({dialogs}) => {
   );
 }
 
-export default Dialogs;
+const mapStateToProps = (state) => {
+  return {
+    dialogs: state.dialogPage.dialogs,
+  }
+};
+
+const AuthRedirectComponent = withAuthRedirect(Dialogs);
+
+const DialogsContainer = connect(mapStateToProps)(AuthRedirectComponent);
+
+export default DialogsContainer;

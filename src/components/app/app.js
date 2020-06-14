@@ -3,7 +3,7 @@ import {Route} from 'react-router-dom';
 import Header from '../header/header';
 import Sidebar from '../sidebar/sidebar';
 import './app.css';
-import { DialogPage, UsersPage } from '../pages';
+import { DialogPage, UsersPage, LoginPage } from '../pages';
 import ProfileContainer from '../pages/profile-page/profile-page-container';
 
 function App(props) {
@@ -24,6 +24,10 @@ function App(props) {
           <Route
             path="/users"
             component={UsersPage}
+          />
+          <Route
+            path="/login"
+            component={LoginPage}
           />
         </main>
       </div>

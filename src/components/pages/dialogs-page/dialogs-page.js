@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './dialogs-page.module.css';
-import DialogsContainer from './../../dialogs/dialogs-container';
+import DialogsContainer from './../../dialogs/dialogs';
 import MessagesContainer from './../../messages/messages-container';
 
 

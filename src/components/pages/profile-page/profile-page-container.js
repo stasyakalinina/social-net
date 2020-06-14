@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { getUserProfile } from '../../../store/profile/actions';
 import ProfilePage from './profile-page';
 import { withRouter } from 'react-router-dom';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 
 class ProfileContainer extends Component {
 
   componentDidMount() {
+    console.log(this.props);
     let userId = this.props.match.params.userId;
     if (!userId) {
       userId = 8267;
@@ -23,10 +25,12 @@ class ProfileContainer extends Component {
   }
 };
 
+const AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
 const mapStateToProps = (state) => {
   return {
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
   }
 }
 
-export default connect(mapStateToProps, {getUserProfile})(withRouter(ProfileContainer));
+export default connect(mapStateToProps, {getUserProfile})(withRouter(AuthRedirectComponent));
