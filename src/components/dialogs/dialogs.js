@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './dialogs.module.css';
 import withAuthRedirect from '../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 const Dialog = ({name, id}) => {
   return (
@@ -34,8 +35,7 @@ const mapStateToProps = (state) => {
   }
 };
 
-const AuthRedirectComponent = withAuthRedirect(Dialogs);
-
-const DialogsContainer = connect(mapStateToProps)(AuthRedirectComponent);
-
-export default DialogsContainer;
+export default compose(
+  connect(mapStateToProps),
+  withAuthRedirect
+)(Dialogs);
