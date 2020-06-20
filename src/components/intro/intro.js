@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './intro.module.css';
 import ava from './girl.jpg'
 import Preloader from '../preloader/preloader';
+import Status from '../status/status';
 
 const Intro = (props) => {
 
@@ -17,12 +18,11 @@ const Intro = (props) => {
           <h1 className={styles.name}>{props.profile.fullName}</h1>
         </li>
         <li>
-          <span>About: </span>
-          <span>{props.profile.aboutMe}</span>
+          <Status status={"Hello world!"} />
         </li>
         <li>
-          <span>Website: </span>
-          <span>none</span>
+          <span>About: </span>
+          <span>{props.profile.aboutMe}</span>
         </li>
         <li>
           <span>Looking for a job? </span>
