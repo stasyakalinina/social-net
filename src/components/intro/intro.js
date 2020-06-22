@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './intro.module.css';
 import ava from './girl.jpg'
 import Preloader from '../preloader/preloader';
 import Status from '../status/status';
+import './intro.scss';
 
 const Intro = (props) => {
 
@@ -11,14 +11,14 @@ const Intro = (props) => {
   }
 
   return (
-    <section className={styles.block}>
-      <img className={styles.ava} src={props.profile.photos.large ? props.profile.photos.large : ava} alt="avatar" />
-      <ul className={styles.list}>
+    <section className="intro">
+      <img className="intro__ava" src={props.profile.photos.large ? props.profile.photos.large : ava} alt="avatar" />
+      <ul className="intro__list">
         <li>
-          <h1 className={styles.name}>{props.profile.fullName}</h1>
+          <h1 className="intro__name">{props.profile.fullName}</h1>
         </li>
         <li>
-          <Status status={"Hello world!"} />
+          <Status status={props.status} updateStatus={props.updateStatus} />
         </li>
         <li>
           <span>About: </span>

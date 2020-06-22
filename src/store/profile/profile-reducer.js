@@ -12,7 +12,8 @@ const initialState = {
     {id: 3, name: 'Katara', src:'https://theblueraft.files.wordpress.com/2010/08/katara1.png?w=700'},
     {id: 4, name: 'Toph', src:'https://vignette.wikia.nocookie.net/avatar/images/4/46/Toph_Beifong.png/revision/latest?cb=20131230122047'},
   ],
-  profile: null
+  profile: null,
+  status: '',
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -42,6 +43,12 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: action.payload
+      };
+
+    case 'SET_STATUS':
+      return {
+        ...state,
+        status: action.payload
       };
 
     default:
