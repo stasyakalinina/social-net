@@ -13,6 +13,13 @@ export const updatePostMessage = (text) => {
   }
 };
 
+export const setStatus = (status) => {
+  return {
+    type: 'SET_STATUS',
+    payload: status,
+  }
+};
+
 export const setUserProfile = (profile) => {
   return {
     type: 'SET_USER_PROFILE',
@@ -25,4 +32,24 @@ export const getUserProfile = (userId) => (dispatch) => {
     .then(data => {
       dispatch(setUserProfile(data));
   });
+};
+
+export const getStatus = (userId) => (dispatch) => {
+  profileAPI.getStatus(userId)
+    .then(response => {
+      console.log(response);
+      dispatch(setStatus(response.data));
+    })
+    .catch(error => console.log(error));;
+};
+
+export const updateStatus = (status) => (dispatch) => {
+  profileAPI.updateStatus(status)
+    .then(response => {
+      console.log(response);
+      if (response.data.resultCode === 0) {
+        dispatch(setStatus(status));
+      }
+    })
+    .catch(error => console.log(error));
 };

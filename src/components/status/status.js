@@ -5,12 +5,15 @@ class Status extends Component {
   state = {
     editMode: false,
     status: this.props.status,
+    loading: false,
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.status !== this.props.status) {
+
       this.setState({
         status: this.props.status,
+        loading: false,
       });
     }
   }
@@ -24,6 +27,7 @@ class Status extends Component {
   deactivateEditMode = () => {
     this.setState({
       editMode: false,
+      loading: true,
     });
     this.props.updateStatus(this.state.status);
   }
@@ -34,21 +38,26 @@ class Status extends Component {
     });
   }
 
+
+
   render() {
+
+    const content = this.state.editMode
+     ? <input
+        onChange={(e) => this.onStatusChange(e)}
+        className="status__input"
+        onBlur={this.deactivateEditMode}
+        autoFocus={true}
+        value={this.state.status}/>
+    : <span
+        className="status__text"
+        onDoubleClick={this.activateEditMode}>
+        {this.props.status || "No status "}
+      </span>
+
     return (
       <div className="status">
-        { this.state.editMode
-        ? <input
-            onChange={(e) => this.onStatusChange(e)}
-            className="status__input"
-            onBlur={this.deactivateEditMode}
-            autoFocus={true}
-            value={this.state.status}/>
-        : <span
-            className="status__text"
-            onDoubleClick={this.activateEditMode}>
-            {this.props.status || "No status "}
-          </span>}
+        { this.state.loading ? <p>Loading...</p> : content }
       </div>
     )
   }
