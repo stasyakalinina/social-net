@@ -1,0 +1,25 @@
+.intro {
+  width: 100%;
+  padding: 20px;
+  margin: 0 0 2rem;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 20px;
+
+  &__ava {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+
+  &__list {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__name {
+    font-size: 28px;
+    margin: 0;
+  }
+}

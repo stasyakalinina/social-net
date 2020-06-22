@@ -1,0 +1,19 @@
+.status {
+
+  &__text {
+    display: inline-block;
+    padding: 5px 0;
+    font-weight: bold;
+  }
+
+  &__input {
+    padding: 5px 10px;
+    font: inherit;
+    border: 1px solid #b5c1cc;
+    border-radius: 20px;
+
+    &:focus {
+      outline:none;
+    }
+  }
+}
