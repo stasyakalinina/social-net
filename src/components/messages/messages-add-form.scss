@@ -1,23 +1,12 @@
-.LoginForm {
-  &__row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-  }
-
-  &__input[type="text"],
-  &__input[type="password"] {
-    width: 350px;
-    padding: 7px 20px;
+.AddMessageForm {
+  &__textarea {
+    min-height: 50px;
+    width: 100%;
+    padding: 10px 15px;
     font: inherit;
-    border: 1px solid #b5c1cc;
-    border-radius: 20px;
-
-    &:hover, &:focus {
-      border-color: #61DAFB;
-      box-shadow: none;
-      outline: none;
-    }
+    color: #303a49;
+    border-radius: 10px;
+    outline: none;
   }
 
   &__btn {
@@ -25,6 +14,7 @@
     align-self: flex-end;
     min-width: 150px;
     padding: 10px;
+    margin: 1em 0 2em;
     font: inherit;
     color: #303a49;
     background-color: #61DAFB;
