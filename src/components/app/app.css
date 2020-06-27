@@ -33,4 +33,5 @@ ul {
   grid-area: content;
   min-height: calc(100vh - 80px);
   background-color: #b5c1cc;
+
 }

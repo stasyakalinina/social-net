@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addPost, updatePostMessage } from '../../store/profile/actions';
+import { addPost } from '../../store/profile/actions';
 import Posts from './posts';
 
 const mapStateToProps = (state) => {
@@ -11,7 +11,6 @@ const mapStateToProps = (state) => {
 
 const actions = {
   addPost,
-  updatePostMessage
 };
 
 const PostsContainer = connect(mapStateToProps, actions)(Posts);

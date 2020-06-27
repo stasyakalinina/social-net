@@ -1,14 +1,8 @@
 import { profileAPI } from '../../services/api';
 
-export const addPost = () => {
+export const addPost = (text) => {
   return {
     type: 'ADD_POST',
-  }
-};
-
-export const updatePostMessage = (text) => {
-  return {
-    type: 'UPDATE_POST_MESSAGE',
     payload: text,
   }
 };

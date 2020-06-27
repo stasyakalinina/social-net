@@ -1,0 +1,45 @@
+.form {
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+
+    input[type="text"],
+    input[type="password"] {
+      width: 350px;
+      padding: 7px 20px;
+      font: inherit;
+      border: 1px solid #b5c1cc;
+      border-radius: 20px;
+
+      &:hover, &:focus {
+        border-color: #61DAFB;
+        box-shadow: none;
+        outline: none;
+      }
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    align-self: flex-end;
+    min-width: 150px;
+    padding: 10px;
+    margin: 0 0 2rem;
+    font: inherit;
+    color: #303a49;
+    background-color: #61DAFB;
+    border: 1px solid rgb(84, 211, 247);
+    border-radius: 20px;
+
+    &:hover,
+    &:focus {
+      box-shadow: 1px 1px 6px 0 #b5c1cc, -1px -1px 6px 0 #b5c1cc;
+      outline: none;
+    }
+
+    &:active {
+      background-color:rgb(28, 176, 218);
+    }
+  }
+}

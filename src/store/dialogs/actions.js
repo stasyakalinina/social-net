@@ -5,8 +5,9 @@ export const updateNewMessage = (text) => {
   }
 };
 
-export const sendMessage = () => {
+export const sendMessage = (message) => {
   return {
     type: 'SEND_MESSAGE',
+    payload: message,
   }
 };

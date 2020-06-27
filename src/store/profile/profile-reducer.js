@@ -5,7 +5,6 @@ const initialState = {
     {id: 3, text: 'Go to kitchen', like: 9},
     {id: 4, text: 'Hello people!', like: 21}
   ],
-  newPostText: '',
   friends: [
     {id: 1, name: 'Aang', src:'https://vignette.wikia.nocookie.net/avatar/images/7/79/Pilot_-_Aang.png/revision/latest/top-crop/width/360/height/360?cb=20120311133235'},
     {id: 2, name: 'Zuco', src:'https://vignette.wikia.nocookie.net/avatar/images/4/4b/Zuko.png/revision/latest?cb=20180630112142'},
@@ -22,22 +21,15 @@ const profileReducer = (state = initialState, action) => {
     case 'ADD_POST': {
       let newPost = {
         id: 5,
-        text: state.newPostText,
+        text: action.payload,
         like: 0
       };
 
       return {
         ...state,
-        newPostText: '',
         posts: [newPost, ...state.posts]
       }
     };
-
-    case 'UPDATE_POST_MESSAGE':
-      return {
-        ...state,
-        newPostText: action.payload,
-      };
 
     case 'SET_USER_PROFILE':
       return {

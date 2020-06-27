@@ -11,7 +11,6 @@ const initialState = {
     {id: 3, message: 'Go to street!'},
     {id: 4, message: 'Hello world!!!'}
   ],
-  newMessageText: '',
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -20,18 +19,11 @@ const dialogsReducer = (state = initialState, action) => {
     case 'SEND_MESSAGE':
       let newMsg = {
         id: 6,
-        message: state.newMessageText,
+        message: action.payload
       };
       return {
         ...state,
-        newMessageText: '',
         messages: [...state.messages, newMsg],
-      };
-
-    case 'UPDATE_MESSAGE_TEXT':
-      return {
-        ...state,
-        newMessageText: action.payload,
       };
 
     default:

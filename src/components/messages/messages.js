@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { ReduxAddMessageForm } from './messages-add-form';
 import styles from './messages.module.css';
 
 const Message = ({msg}) => {
@@ -10,35 +10,12 @@ const Message = ({msg}) => {
   );
 };
 
-const EnterMessage = (props) => {
-
-  const onSendMessage = () => {
-    props.sendMessage();
-  };
-
-  const onUpdateTextMessage = (e) => {
-    let currentText = e.target.value;
-    props.updateNewMessage(currentText);
-  };
-
-  return (
-    <div className={styles.messageBlock}>
-      <textarea
-        className={styles.textarea}
-        placeholder="Enter your message"
-        onChange={onUpdateTextMessage}
-        value={props.newMessageText} />
-      <button
-        className={styles.btn}
-        onClick={onSendMessage}>
-        Send
-      </button>
-    </div>
-  );
-};
-
 const Messages = (props) => {
-  const { messages, newMessageText, updateNewMessage, sendMessage } = props;
+  const { messages, sendMessage } = props;
+
+  const addNewMessage = (value) => {
+    sendMessage(value.newMessageBody);
+  }
 
   const messageItems = messages.map((m) =>
     <li key={m.id}>
@@ -51,10 +28,7 @@ const Messages = (props) => {
       <ul className={styles.messageList}>
         {messageItems}
       </ul>
-      <EnterMessage
-        newMessageText={newMessageText}
-        updateNewMessage={updateNewMessage}
-        sendMessage={sendMessage} />
+      <ReduxAddMessageForm onSubmit={addNewMessage} />
     </React.Fragment>
   );
 };
