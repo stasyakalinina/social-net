@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn } from '../../store/auth/actions';
-import Login from './login';
+import { getAuthUserData, logOut } from '../../store/auth/actions';
+import LoginHeader from './login-header';
 
 class LoginContainer extends Component {
 
   componentDidMount() {
-    this.props.logIn();
+    this.props.getAuthUserData();
   }
 
   render() {
-    return <Login {...this.props} />
+    return <LoginHeader {...this.props} />
   }
 };
 
@@ -22,4 +22,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {logIn})(LoginContainer);
+export default connect(mapStateToProps, {getAuthUserData, logOut})(LoginContainer);

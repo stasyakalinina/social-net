@@ -7,15 +7,16 @@ import { required } from '../../utils/validators';
 
 const LoginForm = (props) => {
   const { handleSubmit } = props
+  console.log(props);
 
   return (
     <form onSubmit={handleSubmit} className="LoginForm">
       <div className="LoginForm__row">
-        <Field name="login"
+        <Field name="email"
           component={Input}
           type="text"
           validate={[required]}
-          placeholder="Login"
+          placeholder="Email"
           className="LoginForm__input" />
       </div>
       <div className="LoginForm__row">
@@ -27,12 +28,16 @@ const LoginForm = (props) => {
           className="LoginForm__input" />
       </div>
       <div className="LoginForm__row">
-        <Field name="remember"
+        <Field name="rememberMe"
           component={Input}
           type="checkbox"
           className="LoginForm__checkbox" />
-        <label htmlFor="remember" className="LoginForm__label">remember me</label>
+        <label htmlFor="rememberMe" className="LoginForm__label">remember me</label>
       </div>
+      { props.error && <div className="LoginForm__row LoginForm__row--error">
+          <span>{props.error}</span>
+        </div>
+      }
       <div className="LoginForm__row">
         <button className="LoginForm__btn ">Login</button>
       </div>
