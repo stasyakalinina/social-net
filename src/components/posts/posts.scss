@@ -1,0 +1,25 @@
+.posts {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+
+  &__item:not(:last-child) {
+    margin: 0 0 1rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  &__textarea {
+    min-height: 50px;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 0 0 1rem;
+    font: inherit;
+    color: #303a49;
+    border-radius: 10px;
+  }
+}

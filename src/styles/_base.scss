@@ -1,0 +1,17 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  color: #303a49;
+  background-color: #e9ecef;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
