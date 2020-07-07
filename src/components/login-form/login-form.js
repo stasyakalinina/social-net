@@ -7,7 +7,6 @@ import { required } from '../../utils/validators';
 
 const LoginForm = (props) => {
   const { handleSubmit } = props
-  console.log(props);
 
   return (
     <form onSubmit={handleSubmit} className="LoginForm">

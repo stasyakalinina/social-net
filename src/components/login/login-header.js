@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from './login.module.css';
+import { connect } from 'react-redux';
+import { logOut } from '../../store/auth/actions';
 import { Link } from 'react-router-dom';
+import styles from './login.module.css';
 
 const LoginHeader = (props) => {
 
@@ -17,4 +19,12 @@ const LoginHeader = (props) => {
   );
 };
 
-export default LoginHeader;
+const mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.isAuth,
+    login: state.auth.login,
+    loading: state.auth.loading,
+  }
+}
+
+export default connect(mapStateToProps, {logOut})(LoginHeader);

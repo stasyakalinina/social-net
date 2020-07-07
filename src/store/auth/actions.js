@@ -17,7 +17,7 @@ export const toggleLoading = (isLoading) => {
 
 export const getAuthUserData = () => (dispatch) => {
   dispatch(toggleLoading(true));
-  authAPI.getAuth()
+  return authAPI.getAuth()
     .then(data => {
       if (data.resultCode === 0) {
         let { id, email, login } = data.data;

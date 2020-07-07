@@ -1,12 +1,13 @@
 import React from 'react';
-import styles from './posts.module.css';
 import Post from './../post/post';
 import { ReduxPostAddForm } from './posts-add-form';
+import './posts.scss';
+import '../../main.scss';
 
 const Posts = (props) => {
 
   const postItems = props.posts.map((post) =>
-    <li key={post.id}>
+    <li key={post.id} className="posts__item">
       <Post message={post.text} like={post.like} />
     </li>
   );
@@ -16,9 +17,9 @@ const Posts = (props) => {
   }
 
   return (
-    <article className={styles.block}>
+    <article className="posts">
       <ReduxPostAddForm onSubmit={onAddPost} />
-      <ul className={styles.list}>
+      <ul className="posts__list">
         {postItems}
       </ul>
     </article>
