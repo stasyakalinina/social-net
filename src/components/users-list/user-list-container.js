@@ -2,19 +2,26 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { follow, unfollow,
          setCurrentPage,
-         getUsersThunkCreator } from '../../store/users/actions';
+         fetchUsers } from '../../store/users/actions';
 import Pagination from '../pagination/pagination';
 import UsersList from './user-list';
 import Preloader from '../preloader/preloader';
+import { getUsers,
+  getPageSize,
+  getTotalUsersCount,
+  getCurrentPage,
+  getLoading,
+  getSendingRequest
+ } from '../../store/selectors/users-selector';
 
 class UsersListContainer extends Component {
 
   componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.pageSize);
+    this.props.fetchUsers(this.props.currentPage, this.props.pageSize);
   }
 
   getPageUsers = (page) => {
-    this.props.getUsers(page, this.props.pageSize);
+    this.props.fetchUsers(page, this.props.pageSize);
   }
 
   render() {
@@ -60,20 +67,21 @@ class UsersListContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage,
-    loading: state.usersPage.loading,
-    sendingRequest: state.usersPage.sendingRequest
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    loading: getLoading(state),
+    sendingRequest: getSendingRequest(state)
   }
-};
+}
+
 
 const actions = {
   follow,
   unfollow,
   setCurrentPage,
-  getUsers: getUsersThunkCreator
+  fetchUsers
 };
 
 export default connect(mapStateToProps, actions)(UsersListContainer);

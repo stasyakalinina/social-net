@@ -50,7 +50,7 @@ export const toggleSendingRequest = (isSending, userId) => {
   }
 };
 
-export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch) => {
+export const fetchUsers = (currentPage, pageSize) => (dispatch) => {
   dispatch(toggleLoading(true));
   usersAPI.getUsers(currentPage, pageSize).then(data => {
       dispatch(setUsers(data.items));
