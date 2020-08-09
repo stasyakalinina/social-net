@@ -1,66 +1,51 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './status.scss'
-class Status extends Component {
 
-  state = {
-    editMode: false,
-    status: this.props.status,
-    loading: false,
+const Status = (props) => {
+
+  let [editMode, setEditMode] = useState(false);
+  let [loading, setLoading] = useState(false);
+  let [status, setStatus] = useState(props.status);
+
+  useEffect(() => {
+    setStatus(props.status);
+    setLoading(false);
+  }, [props.status])
+
+  const activateEditMode = () => {
+    setEditMode(true);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.status !== this.props.status) {
-
-      this.setState({
-        status: this.props.status,
-        loading: false,
-      });
-    }
+  const deactivateEditMode = () => {
+    setEditMode(false);
+    setLoading(true);
+    props.updateStatus(status);
   }
 
-  activateEditMode = () => {
-    this.setState({
-      editMode: true,
-    })
+  const onStatusChange = (e) => {
+    setStatus(e.currentTarget.value);
   }
 
-  deactivateEditMode = () => {
-    this.setState({
-      editMode: false,
-      loading: true,
-    });
-    this.props.updateStatus(this.state.status);
-  }
-
-  onStatusChange = (e) => {
-    this.setState({
-      status: e.currentTarget.value,
-    });
-  }
-
-
-
-  render() {
-
-    const content = this.state.editMode
-     ? <input
-        onChange={(e) => this.onStatusChange(e)}
-        className="status__input"
-        onBlur={this.deactivateEditMode}
-        autoFocus={true}
-        value={this.state.status}/>
-    : <span
-        className="status__text"
-        onDoubleClick={this.activateEditMode}>
-        {this.props.status || "No status "}
-      </span>
+  const content = editMode
+    ? <input
+      onChange={(e) => onStatusChange(e)}
+      className="status__input"
+      onBlur={deactivateEditMode}
+      autoFocus={true}
+      value={status}
+      />
+  : <span
+      className="status__text"
+      onDoubleClick={activateEditMode}>
+      {props.status || "No status "}
+    </span>
 
     return (
       <div className="status">
-        { this.state.loading ? <p>Loading...</p> : content }
+        { loading ? <p>Loading...</p> : content }
       </div>
     )
-  }
+
 }
 
 export default Status;
